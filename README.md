@@ -2,10 +2,9 @@
 
 #### Commmunication via fireCore's Aircontrol protocol, for jailbroken units only (sorry)
 
-See [their page for details](http://support.firecore.com/entries/21375902-3rd-Party-Control-API-AirControl-beta-).
+See [their page for details](http://support.firecore.com/entries/21375902-3rd-Party-Control-API-AirControl-beta-) 
 on the requirements to get aircontrol up and running.
 
-----
 
 ## Overview
 
@@ -17,8 +16,8 @@ pause, now playing and **omgzr** even more!
 
 *this started as a joke... what have I done?*
 
-![papaltv screenshots](docs/images/intro/0001.png)
-![papaltv screenshots](docs/images/intro/0004.png)
+![papaltv screenshot 01](docs/images/intro/0001.png) <br>
+![papaltv screenshot 04](docs/images/intro/0004.png) <br>
 
 ## Sample session
 
@@ -78,11 +77,10 @@ Quite a few commands implemented
     skip_back  toggle        
     soup       type        
 
-## Screenshots
-
-![papaltv screenshots](docs/images/intro/0012.png)
-![papaltv screenshots](docs/images/intro/0027.png)
-![papaltv screenshots](docs/images/intro/0053.png)
+## Screenshots es
+![papaltv screenshot 12](docs/images/intro/0012.png)
+![papaltv screenshot 27](docs/images/intro/0027.png)
+![papaltv screenshot 53](docs/images/intro/0053.png)
 
 
 ## What on earth for???
@@ -129,12 +127,11 @@ Umm... how about umm .. for scheduling crazy cron jobs?
     sleep ((60 * 90))
     ~/speech_synthesis "wow, that was an interesting story about your day. thanks dear."
 
-----
 
 or... just use it when you lose the tiny remote.
 
 
-### Want more??? Prepared to sell your soul?
+## Want more??? Prepared to sell your soul?
 
 Well now.. have I got a deal for you. I've included an example class
 which tells papaltv how to find your media collection so that you can
@@ -158,10 +155,6 @@ module evilpope... no, wait: popeville. Yes... Good... Goood.
      Pure.Pwnage.S01E01.The.Life.Of.A.Pro.Gamer.avi
      Pure.Pwnage.S01E02.Girls.avi
      Pure.Pwnage.S01E03.FPS.Doug.avi
-     ...
-
-
-
-
+     etc...
 
 
