@@ -19,6 +19,14 @@ pause, now playing and **omgzr** even more!
 ![papaltv screenshot 01](docs/images/intro/0001.png) <br>
 ![papaltv screenshot 04](docs/images/intro/0004.png) <br>
 
+## Installing
+
+The source code is hosted on github but the easiest install 
+option for most would be to use the [pip installer](http://www.pip-installer.org/en/latest/installing.html)
+
+    pip install papaltv
+
+
 ## Sample session
 
 #### Login:
