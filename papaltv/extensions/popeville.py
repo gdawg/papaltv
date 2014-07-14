@@ -20,7 +20,7 @@ class PopeVille(PapalTvCmd):
     def __init__(self,*args,**kwargs):
         PapalTvCmd.__init__(self,*args,**kwargs)
         self.volume_map = MyCustomVolumeMap()
-        self.valid_prefix = ['mnt','Volumes','media']
+        self.valid_prefix = ['auto','nas','Video']
 
     def is_volume_map_path(self,opts):
         try:
