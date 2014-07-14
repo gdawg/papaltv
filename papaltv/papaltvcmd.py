@@ -88,7 +88,7 @@ _max_key_quantifier = 255
 class PapalTvCmd(cmd.Cmd):
     def __init__(self,host='apple-tv.local'):
         Cmd.__init__(self)
-        self.tv = AppleTV()
+        self.tv = AppleTV(host)
         self.host = host
         self.shutdown = False
         self.prompt = host + '$ '
