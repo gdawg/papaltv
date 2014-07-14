@@ -94,30 +94,14 @@ class PapalTvCmd(cmd.Cmd):
         self.prompt = host + '$ '
 
         self.quick_keys = {
-            'm': self.do_menu,
-            'hm': self.do_hold_menu,
-            'u': self.do_up,
-            'd': self.do_down,
-            'o': self.do_ok,
-            'ok': self.do_ok,
-            'l': self.do_left,
-            'r': self.do_right,
-            'pp': self.do_playpause,
-            'pa': self.do_pause,
-            'pl': self.do_play,
-            '>': self.do_play,
-            'st': self.do_stop,
-            '.': self.do_stop,
-            'f': self.do_ff,
-            'ff': self.do_ff,
-            '*>': self.do_ff,
-            'rw': self.do_rw,
-            '<*': self.do_rw,
-            'sk': self.do_skip,
-            '#>': self.do_skip,
-            'sb': self.do_skip_back,
-            '<#': self.do_skip_back,
-            'hs': self.do_hold_select,
+            'm': self.do_menu, 'hm': self.do_hold_menu, 'u': self.do_up,
+            'd': self.do_down, 'o': self.do_ok, 'ok': self.do_ok,
+            'l': self.do_left, 'r': self.do_right, 'pp': self.do_playpause,
+            'pa': self.do_pause, 'pl': self.do_play, '>': self.do_play,
+            'st': self.do_stop, '.': self.do_stop, 'f': self.do_ff,
+            'ff': self.do_ff, '*>': self.do_ff, 'rw': self.do_rw,
+            '<*': self.do_rw, 'sk': self.do_skip, '#>': self.do_skip,
+            'sb': self.do_skip_back, '<#': self.do_skip_back, 'hs': self.do_hold_select,
             ',' : self._wait
         }
         keys = [self.escape_key(k) for k in self.quick_keys.keys()]
@@ -126,11 +110,9 @@ class PapalTvCmd(cmd.Cmd):
         self.re_keys = re.compile(r'{0}'.format(quick_regex))
         logger.debug('connecting to {0}'.format(host))
 
-
     # ===== apple tv or general logic / utils
     def escape_key(self,r):
-        r = r.replace('.','\\.')
-        r = r.replace('*','\\*')
+        r = r.replace('.','\\.').replace('*','\\*')
         return r
     def encode(self,val):
         return unicode(val).encode('ascii','ignore')
@@ -173,7 +155,8 @@ class PapalTvCmd(cmd.Cmd):
                 if show_all:
                     self.print_dict(data)
                 else:
-                    for k in [k for k in ['artistName','seasonName','trackNumber','title','mediaDescription'] if k in data.keys()]:
+                    for k in [k for k in ['artistName','seasonName',
+                    'trackNumber','title','mediaDescription'] if k in data.keys()]:
                         print ' {0}'.format(self.encode(data[k]))
             else:
                 print 'No media currently playing.'
@@ -181,52 +164,30 @@ class PapalTvCmd(cmd.Cmd):
             logger.error('{0}'.format(e))
 
     # straight through
-    def do_menu(self,opts): 
-        self.tv.menu() 
-    def do_hold_menu(self,opts): 
-        self.tv.hold_menu() 
-    def do_up(self,opts): 
-        self.tv.up() 
-    def do_down(self,opts): 
-        self.tv.down() 
-    def do_select(self,opts): 
-        self.tv.select() 
-    def do_left(self,opts): 
-        self.tv.left() 
-    def do_right(self,opts): 
-        self.tv.right() 
-    def do_toggle(self,opts): 
-        self.tv.toggle() 
-    def do_playpause(self,opts): 
-        self.tv.playpause() 
-    def do_pause(self,opts): 
-        self.tv.pause() 
-    def do_play(self,opts): 
-        self.tv.play() 
-    def do_stop(self,opts): 
-        self.tv.stop() 
-    def do_ff(self,opts): 
-        self.tv.ff() 
-    def do_rw(self,opts): 
-        self.tv.rw() 
-    def do_skip(self,opts): 
-        self.tv.skip() 
-    def do_skip_back(self,opts): 
-        self.tv.skip_back() 
-    def do_hold_select(self,opts): 
-        self.tv.hold_select() 
+    def do_menu(self,opts): self.tv.menu() 
+    def do_hold_menu(self,opts): self.tv.hold_menu() 
+    def do_up(self,opts): self.tv.up() 
+    def do_down(self,opts): self.tv.down() 
+    def do_select(self,opts): self.tv.select() 
+    def do_left(self,opts): self.tv.left() 
+    def do_right(self,opts): self.tv.right() 
+    def do_toggle(self,opts): self.tv.toggle() 
+    def do_playpause(self,opts): self.tv.playpause() 
+    def do_pause(self,opts): self.tv.pause() 
+    def do_play(self,opts): self.tv.play() 
+    def do_stop(self,opts): self.tv.stop() 
+    def do_ff(self,opts): self.tv.ff() 
+    def do_rw(self,opts): self.tv.rw() 
+    def do_skip(self,opts): self.tv.skip() 
+    def do_skip_back(self,opts): self.tv.skip_back() 
+    def do_hold_select(self,opts): self.tv.hold_select() 
 
     # with arguments or aliases
-    def do_np(self,opts):
-        self.do_playing(opts)
-    def do_text(self,args):
-        self.tv.type(args.strip())
-    def do_type(self,args):
-        self.do_text(args)
-    def do_ok(self,opts): 
-        self.do_select(opts)
-    def do_sel(self,opts): 
-        self.do_select(opts)
+    def do_np(self,opts): self.do_playing(opts)
+    def do_text(self,args): self.tv.type(args.strip())
+    def do_type(self,args): self.do_text(args)
+    def do_ok(self,opts): self.do_select(opts)
+    def do_sel(self,opts): self.do_select(opts)
 
     def help_np(self):
         print 'shows now playing info.'
@@ -263,29 +224,20 @@ class PapalTvCmd(cmd.Cmd):
 
     def do_log(self,opts):
         level = opts.strip().lower()
+        logger.setLevel({'debug': logging.DEBUG,
+            'warning': logging.WARNING, 'info': logging.INFO,
+            'error': logging.ERROR }[level])
 
-        if level == 'debug':
-            logger.setLevel(logging.DEBUG)
-        if level == 'warning':
-            logger.setLevel(logging.WARNING)
-        if level == 'info':
-            logger.setLevel(logging.INFO)
-        if level == 'error':
-            logger.setLevel(logging.ERROR)
-    
-    def do_log_debug(self,opts):
-        self.do_log('debug')
-    def do_log_warn(self,opts):
-        self.do_log('warning')
+    def do_log_debug(self,opts): self.do_log('debug')
+    def do_log_warn(self,opts): self.do_log('warning')
 
     # ===== generic commands
     def do_quit(self,opts):
         self.shutdown = True
         print 'quiting...'
-    def do_q(self,opts):
-        self.do_quit(opts)
-    def do_EOF(self,opts):
-        self.do_quit(opts)
+    def do_q(self,opts): self.do_quit(opts)
+    def do_EOF(self,opts): self.do_quit(opts)
 
-    def postcmd(self,stop,line):
-        return self.shutdown
+    def postcmd(self,stop,line): return self.shutdown
+
+
