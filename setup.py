@@ -229,4 +229,4 @@ evil module evilpope... no, wait: popeville. Yes... Good... Goood.
 '''
 
 if __name__ == '__main__':
-    main()
+    runsetup()
